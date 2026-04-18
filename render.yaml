@@ -1,0 +1,41 @@
+databases:
+  - name: meme-backend-final-db
+    databaseName: meme_library
+    user: meme_backend_user
+
+services:
+  - type: web
+    name: meme-backend-final
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/memes
+    autoDeployTrigger: commit
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: meme-backend-final-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: meme-backend-final-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: meme-backend-final-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: meme-backend-final-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: meme-backend-final-db
+          property: password
+      - key: AUTH0_ISSUER_URI
+        value: https://dev-n6lgjqpsv3qu74s0.us.auth0.com/
+      - key: AUTH0_AUDIENCE
+        value: https://meme-backend-api
+      - key: FRONTEND_ALLOWED_ORIGINS
+        value: https://jiwoo920.github.io,http://localhost:5173,http://localhost:5174

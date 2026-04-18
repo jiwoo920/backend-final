@@ -1,0 +1,12 @@
+.gradle
+build
+out
+bin
+
+*.log
+.DS_Store
+.env
+.env.*
+
+uploads
+!gradle/wrapper/gradle-wrapper.jar
