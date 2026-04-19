@@ -1,5 +1,6 @@
 databases:
   - name: meme-backend-final-db
+    plan: free
     databaseName: meme_library
     user: meme_backend_user
 
