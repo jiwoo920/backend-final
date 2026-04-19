@@ -13,8 +13,10 @@ FROM eclipse-temurin:21-jre
 
 WORKDIR /app
 COPY --from=build /app/build/libs/*.jar app.jar
+COPY start.sh ./start.sh
+RUN chmod +x ./start.sh
 
 ENV PORT=8080
 EXPOSE 8080
 
-CMD ["sh", "-c", "java -Dserver.port=${PORT:-8080} -jar app.jar"]
+CMD ["./start.sh"]

@@ -14,26 +14,10 @@ services:
     healthCheckPath: /api/memes
     autoDeployTrigger: commit
     envVars:
-      - key: DB_HOST
+      - key: DATABASE_URL
         fromDatabase:
           name: meme-backend-final-db
-          property: host
-      - key: DB_PORT
-        fromDatabase:
-          name: meme-backend-final-db
-          property: port
-      - key: DB_NAME
-        fromDatabase:
-          name: meme-backend-final-db
-          property: database
-      - key: DB_USER
-        fromDatabase:
-          name: meme-backend-final-db
-          property: user
-      - key: DB_PASSWORD
-        fromDatabase:
-          name: meme-backend-final-db
-          property: password
+          property: connectionString
       - key: AUTH0_ISSUER_URI
         value: https://dev-n6lgjqpsv3qu74s0.us.auth0.com/
       - key: AUTH0_AUDIENCE
